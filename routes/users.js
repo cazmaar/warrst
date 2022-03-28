@@ -2,15 +2,11 @@ import express from "express";
 
 import {
   getAllStudents,
- getAllStudentsById,
+  getAllStudentsById,
   postStudents,
 } from "../models/users.js";
 
-
-
 const router = express.Router();
-
-
 
 //  Get all receipts
 router.get("/", async (req, res) => {
@@ -20,7 +16,6 @@ router.get("/", async (req, res) => {
     payload: students,
   });
 });
-
 
 // get receipt by id
 router.get("/:id", async (req, res) => {
@@ -33,9 +28,9 @@ router.get("/:id", async (req, res) => {
 });
 
 //post receipt
-router.get("/", async (req, res) => {
-  const body = req.body;
-  const { name, address, phone, description} = body;
+router.post("/", async (req, res) => {
+  const { name, address, phone, description } = req.body;
+  console.log(req.body)
 
   const students = await postStudents(name, address, phone, description);
   res.json({
@@ -43,7 +38,6 @@ router.get("/", async (req, res) => {
     payload: students,
   });
 });
-
 
 //delete post
 // router.get("/:id", async (req, res) => {
@@ -55,4 +49,4 @@ router.get("/", async (req, res) => {
 //   });
 // });
 
-export default router
+export default router;

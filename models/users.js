@@ -16,7 +16,7 @@ export const getAllStudentsById = async (id) => {
 // post to  warranty
 export const postStudents = async (name, address, phone, decsription) => {
   const res = await db.query(
-    `INSERT INTO  students (name, address, phone, decsription) VALUES($1,$2,$3,$4) RETURNING *`,
+    `INSERT INTO  students (name, address, phone, description) VALUES($1,$2,$3,$4) RETURNING *`,
     [name, address, phone, decsription]
   );
   return res.rows;
